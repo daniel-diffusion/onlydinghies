@@ -139,11 +139,16 @@
         max-width: 15ch;
         text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
       }
+      .players {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 34px;
+      }
       .player {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: 14px;
-        margin-top: 34px;
       }
       .play-btn {
         display: inline-flex;
@@ -247,14 +252,24 @@
       </div>
       <div class="hero-content">
         <p class="hero-tag">Mai mult decât un echipaj<br />Suntem o poveste</p>
-        <div class="player">
-          <button class="play-btn" id="playBtn" type="button" aria-label="redă imnul echipajului">
-            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
-          </button>
-          <span class="player-label" id="playLabel">g-funk</span>
+        <div class="players">
+          <div class="player">
+            <button class="play-btn" type="button" aria-label="redă g-funk" data-audio="g-funk">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+            </button>
+            <span class="player-label">g-funk</span>
+            <audio id="g-funk" src="audio/theme.mp3" preload="none"></audio>
+          </div>
+          <div class="player">
+            <button class="play-btn" type="button" aria-label="redă rock" data-audio="rock">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+            </button>
+            <span class="player-label">rock</span>
+            <audio id="rock" src="audio/rock.mp3" preload="none"></audio>
+          </div>
         </div>
-        <audio id="audio" src="audio/theme.mp3" preload="none"></audio>
       </div>
       <span class="scroll-hint">Scroll ↓</span>
     </section>
@@ -271,28 +286,30 @@
     </main>
     <script>
       (() => {
-        const audio = document.getElementById("audio");
-        const btn = document.getElementById("playBtn");
-        const label = document.getElementById("playLabel");
-        if (!audio || !btn) return;
-        btn.addEventListener("click", () => {
-          if (audio.paused) {
-            audio.play().catch(() => {});
-          } else {
-            audio.pause();
-          }
-        });
-        audio.addEventListener("play", () => {
-          btn.classList.add("playing");
-          label.textContent = "g-funk";
-        });
-        audio.addEventListener("pause", () => {
-          btn.classList.remove("playing");
-          label.textContent = "g-funk";
-        });
-        audio.addEventListener("ended", () => {
-          btn.classList.remove("playing");
-          label.textContent = "g-funk";
+        const buttons = [...document.querySelectorAll(".play-btn[data-audio]")];
+        buttons.forEach((button) => {
+          const audio = document.getElementById(button.dataset.audio);
+          if (!audio) return;
+
+          button.addEventListener("click", () => {
+            if (!audio.paused) {
+              audio.pause();
+              return;
+            }
+
+            buttons.forEach((otherButton) => {
+              const otherAudio = document.getElementById(otherButton.dataset.audio);
+              if (otherAudio && otherAudio !== audio) otherAudio.pause();
+            });
+            audio.play().catch((error) => {
+              button.classList.remove("playing");
+              console.error(`Nu s-a putut reda ${button.dataset.audio}:`, error);
+            });
+          });
+
+          audio.addEventListener("play", () => button.classList.add("playing"));
+          audio.addEventListener("pause", () => button.classList.remove("playing"));
+          audio.addEventListener("ended", () => button.classList.remove("playing"));
         });
       })();
     </script>
