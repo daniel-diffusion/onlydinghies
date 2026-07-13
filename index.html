@@ -190,9 +190,21 @@
 
       /* ---------- STORY ---------- */
       .story {
+        background:
+          radial-gradient(1200px 480px at 12% 6%, rgba(255, 214, 140, 0.42), transparent 55%),
+          radial-gradient(900px 520px at 92% 22%, rgba(150, 214, 224, 0.34), transparent 58%),
+          linear-gradient(168deg, #fdf5ea 0%, #f5efe6 34%, #e8f4f1 70%, #dbeef1 100%);
+        padding: clamp(80px, 14vh, 168px) clamp(24px, 5vw, 32px);
+      }
+      .story-inner {
         max-width: 680px;
         margin: 0 auto;
-        padding: clamp(80px, 14vh, 168px) clamp(24px, 5vw, 32px);
+      }
+      html[data-theme="dark"] .story {
+        background:
+          radial-gradient(1200px 480px at 12% 6%, rgba(253, 190, 120, 0.14), transparent 55%),
+          radial-gradient(900px 520px at 92% 22%, rgba(120, 190, 205, 0.12), transparent 58%),
+          linear-gradient(168deg, #35322f 0%, #322f2e 50%, #2b3230 100%);
       }
       .story-lead {
         font-size: clamp(1.7rem, 3.6vw, 2.6rem);
@@ -248,12 +260,14 @@
     </section>
 
     <main class="story">
-      <p class="story-lead">Ne întâlnim pentru mare, dar revenim pentru oameni.</p>
-      <hr class="story-divider" />
-      <p>Între golfurile Greciei și apusurile Italiei, am descoperit că cele mai frumoase destinații nu sunt locurile, ci prieteniile care se nasc pe drum.</p>
-      <p>Fiecare val aduce o aventură. Fiecare port, o poveste. Fiecare seară, un motiv să ridicăm un pahar.</p>
-      <p>Aici nu contează cine ești sau de unde vii. Contează doar să urci la bord cu zâmbetul pe buze și dorința de a trăi fiecare clipă.</p>
-      <p><em>Marea ne unește. Libertatea ne inspiră. Prietenia ne face să revenim.</em></p>
+      <div class="story-inner">
+        <p class="story-lead">Ne întâlnim pentru mare, dar revenim pentru oameni.</p>
+        <hr class="story-divider" />
+        <p>Între golfurile Greciei și apusurile Italiei, am descoperit că cele mai frumoase destinații nu sunt locurile, ci prieteniile care se nasc pe drum.</p>
+        <p>Fiecare val aduce o aventură. Fiecare port, o poveste. Fiecare seară, un motiv să ridicăm un pahar.</p>
+        <p>Aici nu contează cine ești sau de unde vii. Contează doar să urci la bord cu zâmbetul pe buze și dorința de a trăi fiecare clipă.</p>
+        <p><em>Marea ne unește. Libertatea ne inspiră. Prietenia ne face să revenim.</em></p>
+      </div>
     </main>
     <script>
       (() => {
