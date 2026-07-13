@@ -72,9 +72,9 @@
       body {
         background: var(--cp-bg);
         color: var(--cp-text);
-        font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Courier New", monospace;
-        font-variant-caps: all-small-caps;
+        font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
 
       /* ---------- HERO ---------- */
@@ -127,33 +127,15 @@
         z-index: 2;
         color: #fff;
         padding: 0 clamp(20px, 5vw, 56px) clamp(48px, 8vh, 96px);
-        max-width: 1000px;
-      }
-      .hero-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        margin-bottom: 22px;
-        opacity: 0.92;
-      }
-      .hero h1 {
-        font-size: clamp(3.6rem, 13vw, 10rem);
-        line-height: 0.86;
-        letter-spacing: -0.08em;
-        font-weight: 800;
+        max-width: 1040px;
       }
       .hero-tag {
-        margin-top: 4px;
-        font-size: clamp(1.7rem, 4.2vw, 3.4rem);
+        font-size: clamp(2rem, 5.2vw, 4.2rem);
         font-weight: 600;
-        letter-spacing: 0.01em;
-        line-height: 1.08;
-        max-width: 880px;
-        opacity: 0.98;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        max-width: 15ch;
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
       }
       .scroll-hint {
         position: absolute;
@@ -172,44 +154,35 @@
 
       /* ---------- STORY ---------- */
       .story {
-        max-width: 720px;
+        max-width: 680px;
         margin: 0 auto;
-        padding: clamp(80px, 14vh, 160px) clamp(20px, 5vw, 32px);
+        padding: clamp(80px, 14vh, 168px) clamp(24px, 5vw, 32px);
       }
       .story-lead {
-        font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+        font-size: clamp(1.7rem, 3.6vw, 2.6rem);
         font-weight: 600;
-        letter-spacing: 0.005em;
-        line-height: 1.15;
-        margin-bottom: 48px;
+        letter-spacing: -0.02em;
+        line-height: 1.14;
+        margin-bottom: 40px;
       }
       .story p {
-        font-size: clamp(1.05rem, 1.8vw, 1.3rem);
-        line-height: 1.65;
-        letter-spacing: 0.01em;
+        font-size: clamp(1.1rem, 1.7vw, 1.28rem);
+        line-height: 1.7;
         color: var(--cp-text-muted);
-        margin-bottom: 30px;
+        margin-bottom: 28px;
       }
+      .story p:last-child { margin-bottom: 0; }
       .story p em {
         color: var(--cp-text);
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
       }
       .story-divider {
-        width: 48px;
-        height: 3px;
+        width: 40px;
+        height: 2px;
         background: var(--cp-accent);
         border: 0;
-        margin: 8px 0 48px;
-      }
-      .story-close {
-        color: var(--cp-accent) !important;
-        font-size: clamp(1.4rem, 3vw, 2.1rem) !important;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        line-height: 1.15;
-        margin-top: 24px;
-        margin-bottom: 0 !important;
+        margin: 0 0 40px;
       }
 
       @media (max-width: 600px) {
