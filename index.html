@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Only Dinghies is a small sailing club for friends, fun, and getting out on the water."
+    />
+    <title>Only Dinghies — For friends and fun</title>
+    <script>
+      (() => {
+        const param = new URLSearchParams(window.location.search).get("scoutTheme");
+        const theme =
+          param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --cp-bg: #f7f4ef;
+        --cp-bg-elevated: #fcfbf8;
+        --cp-surface: #ffffff;
+        --cp-surface-soft: #f5f5f5;
+        --cp-border: #dedede;
+        --cp-border-strong: #919191;
+        --cp-text: #242424;
+        --cp-text-muted: #5c5c5c;
+        --cp-text-soft: #6f6f6f;
+        --cp-accent: #b11f4b;
+        --cp-accent-hover: #9a1a41;
+        --cp-accent-soft: rgba(177, 31, 75, 0.08);
+        --cp-accent-fg: #ffffff;
+        --cp-success: #16a34a;
+        --cp-danger: #dc2626;
+        --cp-warning: #f59e0b;
+        --cp-link: #0078d4;
+        --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+        --cp-overlay: rgba(255, 255, 255, 0.8);
+        --cp-panel: rgba(255, 255, 255, 0.86);
+        --cp-panel-strong: rgba(255, 255, 255, 0.96);
+        --cp-sheen: rgba(255, 255, 255, 0.55);
+        --cp-highlight: rgba(177, 31, 75, 0.12);
+      }
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --cp-bg: #3d3b3a;
+        --cp-bg-elevated: #343231;
+        --cp-surface: #292929;
+        --cp-surface-soft: #2e2e2e;
+        --cp-border: #474747;
+        --cp-border-strong: #5f5f5f;
+        --cp-text: #dedede;
+        --cp-text-muted: #919191;
+        --cp-text-soft: #b0b0b0;
+        --cp-accent: #fd8ea1;
+        --cp-accent-hover: #fb7b91;
+        --cp-accent-soft: rgba(253, 142, 161, 0.14);
+        --cp-accent-fg: #1a1a1a;
+        --cp-success: #4ade80;
+        --cp-danger: #f87171;
+        --cp-warning: #fbbf24;
+        --cp-link: #4da6ff;
+        --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+        --cp-overlay: rgba(41, 41, 41, 0.88);
+        --cp-panel: rgba(41, 41, 41, 0.72);
+        --cp-panel-strong: rgba(41, 41, 41, 0.96);
+        --cp-sheen: rgba(255, 255, 255, 0.04);
+        --cp-highlight: rgba(253, 142, 161, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--cp-bg);
+        color: var(--cp-text);
+        font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      .site-shell { overflow: hidden; }
+      .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+      .eyebrow {
+        color: var(--cp-accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .nav {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+      .brand {
+        align-items: center;
+        display: inline-flex;
+        font-size: 1.15rem;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: -0.03em;
+      }
+      .brand-mark {
+        align-items: center;
+        background: var(--cp-accent);
+        border-radius: 50%;
+        color: var(--cp-accent-fg);
+        display: inline-flex;
+        font-family: Consolas, "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+      }
+      .nav-links { display: flex; gap: 24px; }
+      .nav-links a { color: var(--cp-text-muted); font-size: 0.9rem; font-weight: 600; }
+      .nav-links a:hover { color: var(--cp-accent); }
+      .hero {
+        display: grid;
+        gap: 48px;
+        grid-template-columns: 1.1fr 0.9fr;
+        padding: 84px 0 96px;
+      }
+      h1, h2, p { margin-top: 0; }
+      h1 {
+        font-size: clamp(3.4rem, 8vw, 6.3rem);
+        letter-spacing: -0.075em;
+        line-height: 0.92;
+        margin: 14px 0 26px;
+        max-width: 720px;
+      }
+      .hero-copy { color: var(--cp-text-muted); font-size: 1.13rem; max-width: 560px; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+      .button {
+        border: 1px solid transparent;
+        border-radius: 0.625rem;
+        cursor: pointer;
+        display: inline-flex;
+        font-weight: 700;
+        justify-content: center;
+        padding: 12px 18px;
+      }
+      .button-primary { background: var(--cp-accent); color: var(--cp-accent-fg); }
+      .button-primary:hover { background: var(--cp-accent-hover); }
+      .button-secondary { border-color: var(--cp-border); color: var(--cp-text); }
+      .button-secondary:hover { background: var(--cp-surface); }
+      .conditions-card {
+        align-self: end;
+        background: var(--cp-surface);
+        border: 1px solid var(--cp-border);
+        border-radius: 16px;
+        box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+        padding: 24px;
+      }
+      .conditions-title { align-items: center; display: flex; justify-content: space-between; }
+      .conditions-title h2 { font-size: 1rem; margin: 0; }
+      .status { align-items: center; color: var(--cp-success); display: inline-flex; font-size: 0.78rem; font-weight: 700; gap: 6px; }
+      .status::before { background: var(--cp-success); border-radius: 50%; content: ""; height: 8px; width: 8px; }
+      .wind { font-size: 3.4rem; font-weight: 800; letter-spacing: -0.06em; line-height: 1; margin: 30px 0 6px; }
+      .wind span { color: var(--cp-text-soft); font-size: 1rem; letter-spacing: 0; }
+      .conditions-meta { color: var(--cp-text-muted); margin-bottom: 24px; }
+      .condition-grid { border-top: 1px solid var(--cp-border); display: grid; grid-template-columns: 1fr 1fr; padding-top: 16px; }
+      .condition-grid div + div { border-left: 1px solid var(--cp-border); padding-left: 16px; }
+      .condition-grid strong { display: block; font-size: 1.1rem; }
+      .condition-grid span { color: var(--cp-text-soft); font-size: 0.8rem; }
+      .intro { background: var(--cp-bg-elevated); border-block: 1px solid var(--cp-border); padding: 80px 0; }
+      .section-heading { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; margin-bottom: 36px; }
+      h2 { font-size: clamp(2rem, 4vw, 3.3rem); letter-spacing: -0.055em; line-height: 1; margin-bottom: 0; }
+      .section-heading p { color: var(--cp-text-muted); font-size: 1.05rem; margin: 0; max-width: 500px; }
+      .values { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+      .value {
+        background: var(--cp-surface);
+        border: 1px solid var(--cp-border);
+        border-radius: 16px;
+        box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+        padding: 24px;
+      }
+      .value-number { color: var(--cp-accent); font-family: Consolas, "Courier New", Courier, monospace; font-size: 0.82rem; font-weight: 700; }
+      .value h3 { font-size: 1.15rem; letter-spacing: -0.02em; margin: 28px 0 10px; }
+      .value p { color: var(--cp-text-muted); margin-bottom: 0; }
+      .join { padding: 96px 0; }
+      .join-panel {
+        background: var(--cp-accent);
+        border-radius: 16px;
+        color: var(--cp-accent-fg);
+        display: flex;
+        gap: 32px;
+        justify-content: space-between;
+        padding: clamp(28px, 5vw, 56px);
+      }
+      .join-panel h2 { max-width: 620px; }
+      .join-panel p { margin: 18px 0 0; max-width: 520px; }
+      .button-light { background: var(--cp-accent-fg); color: var(--cp-accent); white-space: nowrap; }
+      .button-light:hover { background: var(--cp-surface-soft); }
+      footer { border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: 0.85rem; padding: 24px 0; }
+      .footer-inner { align-items: center; display: flex; justify-content: space-between; }
+      .footer-inner a { color: var(--cp-link); }
+
+      @media (max-width: 760px) {
+        .nav-links { display: none; }
+        .hero, .section-heading { grid-template-columns: 1fr; }
+        .hero { gap: 36px; padding: 54px 0 64px; }
+        .values { grid-template-columns: 1fr; }
+        .join-panel { align-items: flex-start; flex-direction: column; }
+      }
+      @media (max-width: 440px) {
+        .container { width: min(100% - 32px, 1120px); }
+        .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="container">
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="brand" href="#top" aria-label="Only Dinghies home">
+            <span class="brand-mark">OD</span>
+            <span>only dinghies</span>
+          </a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#join">Join us</a>
+          </div>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="container hero" aria-labelledby="hero-title">
+          <div>
+            <div class="eyebrow">Sailing, simplified</div>
+            <h1 id="hero-title">Small boats.<br />Big days out.</h1>
+            <p class="hero-copy">
+              Only Dinghies is a low-key crew of friends who sail for the breeze, the banter, and the post-race stories.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#join">Come sailing</a>
+              <a class="button button-secondary" href="#about">How it works</a>
+            </div>
+          </div>
+
+          <aside class="conditions-card" aria-label="Today's sailing conditions">
+            <div class="conditions-title">
+              <h2>Today on the water</h2>
+              <span class="status">Good to go</span>
+            </div>
+            <div class="wind">12 <span>knots</span></div>
+            <div class="conditions-meta">South-west breeze · easy chop</div>
+            <div class="condition-grid">
+              <div><strong>22°</strong><span>Air temp</span></div>
+              <div><strong>16:30</strong><span>Meet at the ramp</span></div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="intro" id="about" aria-labelledby="about-title">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">No pressure. Just wind.</div>
+                <h2 id="about-title">Leave the big-boat drama at the dock.</h2>
+              </div>
+              <p>
+                Beginners, improvers, and salty regulars are all welcome. Bring a dinghy if you have one; bring curiosity if you do not.
+              </p>
+            </div>
+            <div class="values">
+              <article class="value">
+                <span class="value-number">01</span>
+                <h3>Easy starts</h3>
+                <p>Short sessions, friendly briefings, and no experience required for your first time out.</p>
+              </article>
+              <article class="value">
+                <span class="value-number">02</span>
+                <h3>Good company</h3>
+                <p>We race when the mood strikes, help each other rig, and always make time for a proper debrief.</p>
+              </article>
+              <article class="value">
+                <span class="value-number">03</span>
+                <h3>More water time</h3>
+                <p>Less ceremony, less waiting around, and more of the simple joy of sailing a responsive little boat.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="join container" id="join" aria-labelledby="join-title">
+          <div class="join-panel">
+            <div>
+              <div class="eyebrow">The next launch is yours</div>
+              <h2 id="join-title">Bring sunscreen. We’ll bring the welcome.</h2>
+              <p>Get in touch to hear about the next casual sail, boat-sharing, and beginner-friendly days on the water.</p>
+            </div>
+            <a class="button button-light" href="mailto:hello@onlydinghies.com?subject=I'd%20like%20to%20go%20sailing">Say hello</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container footer-inner">
+          <span>© <span id="year"></span> Only Dinghies</span>
+          <a href="mailto:hello@onlydinghies.com">hello@onlydinghies.com</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
