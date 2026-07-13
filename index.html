@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,27 +69,29 @@
 
       * { box-sizing: border-box; }
       body {
-        align-items: center;
-        background: var(--cp-bg) url("images/onlydinghies.png") center / cover no-repeat fixed;
+        background: var(--cp-bg);
         color: var(--cp-text);
-        display: flex;
         font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
-        justify-content: center;
         margin: 0;
-        min-height: 100vh;
-        padding: 24px;
       }
-      main {
-        background: var(--cp-panel-strong);
-        border: 1px solid var(--cp-border);
-        border-radius: 16px;
-        box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
-        max-width: 680px;
-        overflow: hidden;
-        text-align: center;
-        width: 100%;
+      .page { margin: 0 auto; max-width: 1440px; padding: 20px; }
+      .masthead {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0 56px;
       }
-      .content { padding: 36px 28px 28px; }
+      .wordmark { font-size: 1rem; font-weight: 800; letter-spacing: -0.03em; }
+      .since { color: var(--cp-text-soft); font-size: 0.82rem; font-weight: 700; }
+      .hero { display: grid; grid-template-columns: 0.85fr 1.15fr; min-height: 620px; }
+      .hero-copy {
+        align-items: flex-start;
+        background: var(--cp-bg-elevated);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(28px, 5vw, 76px);
+      }
       .eyebrow {
         color: var(--cp-accent);
         font-size: 0.75rem;
@@ -98,38 +100,94 @@
         text-transform: uppercase;
       }
       h1 {
-        font-size: clamp(2.8rem, 8vw, 4.8rem);
-        letter-spacing: -0.07em;
-        line-height: 0.95;
-        margin: 14px 0 18px;
+        font-size: clamp(4rem, 8vw, 8.8rem);
+        letter-spacing: -0.09em;
+        line-height: 0.82;
+        margin: 24px 0;
       }
-      p { color: var(--cp-text-muted); font-size: 1.03rem; line-height: 1.55; margin: 0 auto 16px; max-width: 560px; }
-      .lead { color: var(--cp-text); font-size: 1.2rem; font-weight: 700; }
-      .rule { border: 0; border-top: 1px solid var(--cp-border); margin: 28px auto; max-width: 260px; }
-      .closing { color: var(--cp-accent); font-weight: 800; margin-bottom: 0; }
-      @media (max-width: 440px) {
-        body { background-attachment: scroll; padding: 16px; }
-        .content { padding: 28px 20px 22px; }
-        .details span { padding: 0 10px; }
+      .hero-copy p {
+        color: var(--cp-text-muted);
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        line-height: 1.45;
+        margin: 0;
+        max-width: 390px;
+      }
+      .anchor { color: var(--cp-accent); font-size: 1.8rem; }
+      .photo {
+        background: var(--cp-surface-soft) url("images/onlydinghies.png") center / cover no-repeat;
+        min-height: 420px;
+      }
+      .story { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: clamp(32px, 9vw, 160px); padding: 140px clamp(12px, 9vw, 150px); }
+      .story-label {
+        color: var(--cp-accent);
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .story-copy { max-width: 650px; }
+      .story-copy p { color: var(--cp-text-muted); font-size: clamp(1.15rem, 2vw, 1.65rem); letter-spacing: -0.025em; line-height: 1.35; margin: 0 0 32px; }
+      .story-copy p:first-child { color: var(--cp-text); font-size: clamp(1.65rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1.08; }
+      .quote {
+        background: var(--cp-accent);
+        color: var(--cp-accent-fg);
+        margin-top: 24px;
+        padding: clamp(40px, 8vw, 130px);
+      }
+      .quote p { font-size: clamp(2.4rem, 6vw, 6.5rem); font-weight: 800; letter-spacing: -0.075em; line-height: 0.88; margin: 0; max-width: 1000px; }
+      footer { color: var(--cp-text-soft); display: flex; font-size: 0.8rem; justify-content: space-between; padding: 28px 0 8px; }
+      @media (max-width: 760px) {
+        .page { padding: 12px; }
+        .masthead { padding-bottom: 28px; }
+        .hero, .story { grid-template-columns: 1fr; }
+        .hero-copy { min-height: 480px; }
+        .photo { min-height: 420px; }
+        .story { gap: 24px; padding: 72px 18px; }
+        .quote { margin-inline: -12px; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <div class="content">
-        <div class="eyebrow">Tequila Heroes • Eroi pe Barcă since 2017</div>
-        <h1>Frații Mării</h1>
-        <p class="lead">Nu suntem doar un echipaj. Suntem o poveste.</p>
-        <hr class="rule" />
-        <p>Ne întâlnim pentru mare, dar revenim pentru oameni.</p>
-        <p>Între golfurile Greciei și apusurile Italiei, am descoperit că cele mai frumoase destinații nu sunt locurile, ci prieteniile care se nasc pe drum.</p>
-        <p>Fiecare val aduce o aventură. Fiecare port, o poveste. Fiecare seară, un motiv să ridicăm un pahar.</p>
-        <p>Aici nu contează cine ești sau de unde vii.</p>
-        <p>Contează doar să urci la bord cu zâmbetul pe buze și dorința de a trăi fiecare clipă.</p>
-        <p>Marea ne unește. Libertatea ne inspiră. Prietenia ne face să revenim.</p>
-        <hr class="rule" />
-        <p class="closing">⚓ Frații Mării. O dată la bord. Pentru totdeauna în echipaj.</p>
-      </div>
-    </main>
+    <div class="page">
+      <header class="masthead">
+        <div class="wordmark">Frații Mării</div>
+        <div class="since">since 2017</div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="title">
+          <div class="hero-copy">
+            <div>
+              <div class="eyebrow">Tequila Heroes • Eroi pe Barcă</div>
+              <h1 id="title">Frații<br />Mării</h1>
+              <p>Nu suntem doar un echipaj. Suntem o poveste.</p>
+            </div>
+            <div class="anchor" aria-hidden="true">⚓</div>
+          </div>
+          <div class="photo" role="img" aria-label="Frații Mării sailing together"></div>
+        </section>
+
+        <section class="story" aria-label="Povestea noastră">
+          <div class="story-label">Marea ne aduce împreună</div>
+          <div class="story-copy">
+            <p>Ne întâlnim pentru mare, dar revenim pentru oameni.</p>
+            <p>Între golfurile Greciei și apusurile Italiei, am descoperit că cele mai frumoase destinații nu sunt locurile, ci prieteniile care se nasc pe drum.</p>
+            <p>Fiecare val aduce o aventură. Fiecare port, o poveste. Fiecare seară, un motiv să ridicăm un pahar.</p>
+            <p>Aici nu contează cine ești sau de unde vii.</p>
+            <p>Contează doar să urci la bord cu zâmbetul pe buze și dorința de a trăi fiecare clipă.</p>
+            <p>Marea ne unește. Libertatea ne inspiră. Prietenia ne face să revenim.</p>
+          </div>
+        </section>
+
+        <section class="quote" aria-label="Frații Mării">
+          <p>⚓ Frații Mării.<br />O dată la bord.<br />Pentru totdeauna în echipaj.</p>
+        </section>
+      </main>
+
+      <footer>
+        <span>Tequila Heroes</span>
+        <span>Eroi pe Barcă</span>
+      </footer>
+    </div>
   </body>
 </html>
